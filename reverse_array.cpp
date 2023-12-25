@@ -1,11 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+//complexity
+//time -> O(N)
+//space -> O(1)
 void reverse(int *arr, int n){
     for(int i=0;i<n/2;i++){
         swap(arr[i],arr[n-1-i]);
     }
 }
+//complexity
+//time -> O(N)
+//space -> O(N)
 void reverseRecursion(int *arr,int start,int end){
     if(start>=end)return;
     swap(arr[start],arr[end]);
