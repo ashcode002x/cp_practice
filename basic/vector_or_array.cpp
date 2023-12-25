@@ -72,7 +72,7 @@ inline int getMax(vector<int>arr){
 // ********prefix sum ********
 
 //complexity
-//time -> O(logN)
+//time -> O(N)
 //space -> O(1)
 inline vector<int>prefixSum(vector<int>&v){
     vector<int>ans;
@@ -83,6 +83,24 @@ inline vector<int>prefixSum(vector<int>&v){
     }
     return ans;
 }
+// prefix sum of 2d vector
+//complexity
+//time -> O(N)
+//space -> O(1)
+inline void prefixSum2D(vector<vector<int>>&arr){
+    int n = arr.size();
+    for (int  i = 0; i < n; i++)
+    {
+        arr[i] = prefixSum(arr[i]); 
+    }
+    for(int i=1;i<n;i++){
+        for(int j=0;j<n;j++){
+            arr[i][j]+=arr[i-1][j];
+        }
+    }
+    
+}
+
 
 /**********print array**********/
 //complexity
@@ -98,11 +116,20 @@ inline void printArray(vector<int>arr){
         cout<<arr[i]<<' ';
     }cout<<endl;
 }
+inline print2DArray(vector<vector<int>>arr){
+    for(int i=0;i<arr.size();i++){
+        for(int j=0;j<arr[i].size();j++){
+            cout<<arr[i][j]<<' ';
+        }cout<<endl;
+    }
+}
 
 int main(){
-    vector<int>arr={1,2,3,4,5,6,7};
-    vector<int>ans = prefixSum(arr);
-    printArray(ans);
+    vector<vector<int>>v={{10,20,30},{5,10,20},{2,4,6}};
+    // printArray(ans);
+    print2DArray(v);
+    prefixSum2D(v);
+    print2DArray(v);
     
     return 0;
 }
