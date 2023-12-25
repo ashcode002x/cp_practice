@@ -3,7 +3,7 @@ using namespace std;
 //complexity
 //time -> O(N)
 //space -> O(1)
-void reverse(int *arr, int n){
+inline void reverse(int *arr, int n){
     for(int i=0;i<n/2;i++){
         swap(arr[i],arr[n-1-i]);
     }
@@ -11,12 +11,12 @@ void reverse(int *arr, int n){
 //complexity
 //time -> O(N)
 //space -> O(N)
-void reverseRecursion(int *arr,int start,int end){
+inline void reverseRecursion(int *arr,int start,int end){
     if(start>=end)return;
     swap(arr[start],arr[end]);
     reverseRecursion(arr,start+1,end-1);
 }
-void printArray(int *arr,int n){
+inline void printArray(int *arr,int n){
     for(int i=0;i<n;i++){
         cout<<arr[i]<<' ';
     }cout<<endl;

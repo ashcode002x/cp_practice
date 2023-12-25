@@ -3,7 +3,7 @@ using namespace std;
 //complexity
 //time -> O(logN)
 //space -> O(1)
-int SumOfDigit(int n){
+inline int SumOfDigit(int n){
     int ans = 0;
     while(n>0){
         ans+=n%10;
