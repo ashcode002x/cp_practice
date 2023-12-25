@@ -65,8 +65,24 @@ inline int SumOfDigit(int n){
 inline int getMin(vector<int>arr){
     return *min(arr.begin(),arr.end());
 }
+inline int getMax(vector<int>arr){
+    return *max(arr.begin(),arr.end());
+}
 
+// ********prefix sum ********
 
+//complexity
+//time -> O(logN)
+//space -> O(1)
+inline vector<int>prefixSum(vector<int>&v){
+    vector<int>ans;
+    int curr_sum = 0;
+    for(int i=0;i<v.size();i++){
+        curr_sum+=v[i];
+        ans.push_back(curr_sum);
+    }
+    return ans;
+}
 
 /**********print array**********/
 //complexity
@@ -77,10 +93,16 @@ inline void printArray(int *arr,int n){
         cout<<arr[i]<<' ';
     }cout<<endl;
 }
+inline void printArray(vector<int>arr){
+    for(int i=0;i<arr.size();i++){
+        cout<<arr[i]<<' ';
+    }cout<<endl;
+}
 
 int main(){
-    vector<int>arr={INT_MIN,2,3,4,5,6,7};
-    cout<<getMin(arr);
+    vector<int>arr={1,2,3,4,5,6,7};
+    vector<int>ans = prefixSum(arr);
+    printArray(ans);
     
     return 0;
 }
