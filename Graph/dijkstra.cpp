@@ -43,7 +43,8 @@ int main(){
     vector<bool>visited(vertex,false);
     g.dijkstra(0,0,dist,visited);
     for (int i = 0; i < vertex; ++i) {
-        cout << dist[i] << endl;
+        cout << dist[i] << ' ';
     }
+    cout<<endl;
     return 0;
 }
