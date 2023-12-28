@@ -80,7 +80,7 @@ int main()
     Graph g;
     int V;
     V = 5;
-    g.adj.resize(V);  // Resize the vector to the correct size
+    g.adj.resize(V);
     g.addEdge(0, 0, 0);
     g.addEdge(0, 1, 4);
     g.addEdge(0, 3, 5);
