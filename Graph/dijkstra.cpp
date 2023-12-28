@@ -5,27 +5,36 @@ class Graph{
     public:
     unordered_map<int,vector<pair<int,int>>>adj;
     void addEdge(int,int,int);
-    void dijkstra(int,int,vector<int>&,vector<bool>&);
+    void dijkstra(int);
 };
 
 void Graph::addEdge(int u,int v,int w){
     adj[u].push_back({v,w});
     adj[v].push_back({u,w});
 }
-void Graph::dijkstra(int src,int curr_dist,vector<int>&dist,vector<bool>&visited){
-    queue<pair<int,int>>q;
-    q.push({src,curr_dist});
-    while(!q.empty()){
-        auto front = q.front();
-        q.pop();
-        dist[front.first]=min(front.second,dist[front.first]);
-        visited[front.first]=true;
-        for(auto next:adj[front.first]){
-            if(!visited[next.first]){
-                q.push({next.first,next.second+front.second});
+void Graph::dijkstra(int src){
+    priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>pq;
+    int V = adj.size();
+    vector<int>dist(V,INT_MAX);
+    dist[src]=0;
+    vector<bool>visited(V,false);
+    pq.push({src,0});
+    while(!pq.empty()){
+        auto top = pq.top();
+        pq.pop();
+        int curr = top.first;
+        int wt = top.second;
+        visited[curr]=true;
+        for(auto it:adj[curr]){
+            if(!visited[it.first]){
+                dist[it.first]=min(it.second+wt,dist[it.first]);
+                pq.push({it.first,dist[it.first]});
             }
         }
     }
+    for(int i:dist){
+        cout<<i<<' ';
+    }cout<<endl;
 }
 
 int main(){
@@ -39,12 +48,6 @@ int main(){
     g.addEdge(2,5,6);
     g.addEdge(3,5,2);
     g.addEdge(4,5,3);
-    vector<int>dist(vertex,INT_MAX);
-    vector<bool>visited(vertex,false);
-    g.dijkstra(0,0,dist,visited);
-    for (int i = 0; i < vertex; ++i) {
-        cout << dist[i] << ' ';
-    }
-    cout<<endl;
+    g.dijkstra(0);
     return 0;
 }
