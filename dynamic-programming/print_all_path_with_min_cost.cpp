@@ -1,14 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-char path(pair<int, int> ini, pair<int, int> fin)
-{
-    if (ini.first == fin.first)
-        return 'H';
-    else
-        return 'V';
-}
-
 int main()
 {
     int n, m;
