@@ -34,6 +34,8 @@ def update(node,start,end,idx,val):
         update(2*node+1,mid+1,end,idx,val)
     tree[node]=max(tree[2*node],tree[2*node+1])
 
+
+
 temp = [6, 8, -1, 2, 17, 1, 3, 2, 4]
 n=len(temp)
 for i in range(len(temp)):
@@ -42,5 +44,4 @@ build(1, 0, len(temp) - 1)
 print("query is: ",query(1,0,n-1,2,6))
 update(1,0,n-1,6,18)
 print("query after update is: ",query(1,0,n-1,2,6))
-
 print("tree is: ",tree[:20])
